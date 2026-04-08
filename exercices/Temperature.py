@@ -4,8 +4,8 @@
 # If between 10 and 15 degrees, print "It is cool!"
 # If between 15 and 20 degrees, print "It is warm!"
 # If more than 20 degrees, print "It is hot!"
-print("Enter the temperature in Celsius:")
-temperature = float(input())
+temperature = float(input("Enter the temperature in Celsius:"))
+
 match temperature:
     case temp if temp < 10:
         print("It is cold!")
