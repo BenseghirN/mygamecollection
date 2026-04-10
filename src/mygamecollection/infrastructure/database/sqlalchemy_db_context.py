@@ -16,7 +16,7 @@ class SQLAlchemyGameCollectionDbContext(IGameCollectionDbContext):
         await self._session.refresh(obj)
 
     async def execute(self, statement):
-        return self._session.execute(statement)
+        return await self._session.execute(statement)
 
     def delete(self, obj) -> None:
         self._session.delete(obj)
