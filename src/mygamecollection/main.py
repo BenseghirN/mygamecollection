@@ -14,7 +14,7 @@ async def main():
 
             print(f"{len(games)} game(s) found")
             for game in games:
-                print(f"{game.id} - {game.name}")
+                print(f"{game.id} - {game.igdb_id} - {game.name}")
 
         except Exception as e:
             print(f"An error occurred: {e}")
