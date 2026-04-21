@@ -5,8 +5,7 @@ from sqlalchemy import Integer, String, DateTime
 from datetime import datetime, timezone
 
 from mygamecollection.infrastructure.database.base import Base
-from mygamecollection.infrastructure.database.models import GameModel
-from mygamecollection.infrastructure.database.models.user_game_model import user_games_table
+from mygamecollection.infrastructure.database.models.user_game_model import UserGameModel
 from mygamecollection.domain.entities.user import User
 
 
@@ -18,7 +17,7 @@ class UserModel(Base):
     first_name: Mapped[str] = mapped_column(String(50), nullable=False)
     last_name: Mapped[str] = mapped_column(String(50), nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
-    users: Mapped[List[GameModel]] = relationship(secondary=user_games_table, back_populates="users")
+    game_entries: Mapped[List[UserGameModel]] = relationship(back_populates="users")
 
     def to_domain(self) -> User:
         return User(
